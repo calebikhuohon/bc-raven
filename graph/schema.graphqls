@@ -1,0 +1,62 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Card {
+    cardName: String!
+    cardNumber: String!
+    cvv: String!
+    expiryDate: String!
+}
+
+type User {
+  id: ID!
+  username: String!
+}
+
+type Transaction {
+    Id: ID!
+    user: User!
+    transactionDate: String!
+    chargeSuccessful: Boolean!
+    walletUpdated: Boolean!
+    TransactionId: String
+}
+
+type Query {
+  transactions: [Transaction!]!
+}
+
+input NewTransaction {
+  cardNumber: String!
+  cvv: String!
+  Name: String!
+  City: String!
+  Country: String!
+  Address: String!
+  PostalCode: String!
+  ExpMonth: Int!
+  ExpYear: Int!
+  Email: String!
+  PhoneNumber: String!
+  Amount: String!
+  Currency: String!
+  Description: String!
+}
+
+input UserAuth {
+    username: String!
+    password: String!
+}
+
+input NewRefreshToken {
+    Token: String!
+}
+
+
+type Mutation {
+  createTransaction(input: NewTransaction!): Transaction!
+  createUser(input: UserAuth!): String!
+  Login(input: UserAuth!): String!
+  RefreshToken(input: NewRefreshToken!): String!
+}

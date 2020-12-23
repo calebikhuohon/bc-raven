@@ -1,0 +1,20 @@
+syntax="proto3";
+
+option go_package = ".;provider";
+package provider;
+
+service Card {
+  rpc createCard (req) returns (res);
+}
+
+service Payment {
+  rpc makePayment (req) returns (res);
+}
+
+message req {
+  string payload = 1;
+}
+
+message res {
+  string payload = 1;
+}
