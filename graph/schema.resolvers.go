@@ -23,7 +23,6 @@ import (
 
 func (r *mutationResolver) CreateTransaction(ctx context.Context, input model.NewTransaction) (*model.Transaction, error) {
 	user := auth.ForContext(ctx)
-	log.Println(user)
 	if user == nil {
 		return &model.Transaction{}, fmt.Errorf("access denied")
 	}
@@ -61,8 +60,6 @@ func (r *mutationResolver) CreateTransaction(ctx context.Context, input model.Ne
 			IpAddress:   ip,
 		},
 	}
-
-	log.Println(card)
 
 	_, err = circle.CreateCard(&card)
 	if err != nil {

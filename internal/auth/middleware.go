@@ -19,7 +19,6 @@ func Middleware() func(handler http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			header := r.Header.Get("Authorization")
-			log.Println(header)
 			//allow unauthenticated users
 			if header == "" {
 				next.ServeHTTP(w, r)
@@ -28,7 +27,6 @@ func Middleware() func(handler http.Handler) http.Handler {
 
 			tokenStr := header
 			username, err := jwt.ParseToken(tokenStr)
-			log.Println(username)
 			if err != nil {
 				http.Error(w, "Invalid token", http.StatusForbidden)
 				return
@@ -37,7 +35,6 @@ func Middleware() func(handler http.Handler) http.Handler {
 			user := users.User{UserName: username}
 
 			client, ctx, err := database.ConnectToFirebase()
-			log.Println("connecting to firestore.....")
 			if err != nil {
 				log.Fatal(err)
 			}
