@@ -16,8 +16,7 @@ func CreateCardResponse(request interface{}) (string, error) {
 	host := "0.0.0.0"
 	srvAddr := fmt.Sprintf("%s:%s", host, grpcPort)
 
-	opts = append(opts, grpc.WithAuthority(host))
-	opts = append(opts, grpc.WithInsecure())
+	opts = append(opts, grpc.WithAuthority(host), grpc.WithInsecure())
 
 	conn, err := grpc.Dial(srvAddr, opts...)
 	if err != nil {
