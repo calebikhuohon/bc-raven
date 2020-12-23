@@ -146,7 +146,7 @@ func StartSubscriber() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/subscribe", Subscribe)
 
-	log.Fatal(http.ListenAndServe(":55005", router))
+	log.Fatal(http.ListenAndServe(":5500", router))
 }
 
 func respondWithError(w http.ResponseWriter, code int, message string) {
