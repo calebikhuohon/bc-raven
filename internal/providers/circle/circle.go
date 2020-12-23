@@ -9,10 +9,6 @@ import (
 	"net/http"
 )
 
-const (
-	KEY = "QVBJX0tFWTo3ZjI0ZjhiM2I4NzY3ODE5NmEyMTZjNzQ4YzVjZDMzMjpkYTcxODEzMmMwMmMwZjIxMWY3OWY5M2FiZDI0ZjQ2OA=="
-)
-
 type CardDetails struct {
 	Number string `json:"number"`
 	Cvv    string `json:"cvv"`
